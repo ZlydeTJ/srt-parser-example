@@ -1,35 +1,32 @@
-import SrtParser from '@qgustavor/srt-parser'
+const screenplayS1E1 = [{
+    character: "Gangster",
+    text: "You should never have come back here, Mr. Samson.",
+    episode: 1,
+    season: 1,
+}, 
+{
+    // Brock Samson: Uh-huh.
+    character: "Brock Samson",
+    text: "Uh-huh.",
+    episode: 1,
+    season: 1,
+},
+{
+    // Brock Samson: Uh-huh.
+    character: "Gangster",
+    text: "Did you think I’d forgotten what you did to me?",
+    episode: 1,
+    season: 1,
+}
 
-const srt = `
-1
-00:00:00,000 --> 00:00:04,162
-WWW.MY-SUBS.CO
+];
 
-1
-00:00:15,175 --> 00:00:16,243
-Master.
+const filters = {character: "Brock Samson", episode: 1};
 
-2
-00:00:16,243 --> 00:00:18,011
-I have news of Dr. Venture's
 
-3
-00:00:18,011 --> 00:00:19,445
-latest invention.
+const items = screenplayS1E1.filter(({character}) => character === "Brock Samson").map(({text}) => text);
+console.log(items.length)
 
-4
-00:00:24,448 --> 00:00:26,516
-Yesterday's <i>New York herald,</i>
-
-5
-00:00:26,516 --> 00:00:28,117
-<i>science section.</i>
-
-6
-00:00:28,117 --> 00:00:30,519
-Thank you, Kikai.
-`
-
-const parser = new SrtParser()
-const parsed = parser.fromSrt(srt)
-console.log(parsed)
+console.log(
+    items[Math.floor(Math.random()*items.length)]
+)
